@@ -11,10 +11,10 @@ class App extends Component {
     bad: 0
   }
   handleButtonClick = (event) => {
-    const buttonId = event.target.id
+    const buttonName = event.target.name
     
     this.setState(prevState => ({
-      [buttonId]: prevState[buttonId] + 1
+      [buttonName]: prevState[buttonName] + 1
     }))
   }
   countTotalFeedback() {
