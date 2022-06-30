@@ -25,13 +25,14 @@ class App extends Component {
   }
 
   render() {
-    const {good, neutral, bad} = this.state
+    const { good, neutral, bad } = this.state
+    const buttonOptions = Object.keys(this.state)
     const totalFeedback = this.countTotalFeedback()
     const positivePercentage = this.countPositiveFeedbackPercentage(totalFeedback)
 
     return (<>
       <Section title={'Please leave feedback'}>
-        <FeedbackOptions incrementStatisticsData={this.handleButtonClick} />
+        <FeedbackOptions options={buttonOptions} incrementStatisticsData={this.handleButtonClick} />
       </Section>
               
       <Section title={'Statistics'}>

@@ -1,23 +1,25 @@
 import PropTypes from 'prop-types';
 import styles from './styles.module.scss'
 
-const FeedbackOptions = ({ incrementStatisticsData }) => {
+const FeedbackOptions = ({ options, incrementStatisticsData }) => {
   return (
     <div className={styles.feedbackOptions}>
-      <button className={styles.good} name="good" type="button" onClick={incrementStatisticsData}>
-        Good
+      {options.map(option => {
+        return <button
+          key={option}
+          className={styles[option]}
+          name={option}
+          type="button"
+          onClick={incrementStatisticsData}>
+          {option}
       </button>
-      <button className={styles.neutral} name="neutral" type="button" onClick={incrementStatisticsData}>
-        Neutral
-      </button>
-      <button className={styles.bad} name="bad" type="button" onClick={incrementStatisticsData}>
-        Bad
-      </button>
+      })}
     </div>
   );
 };
 
 FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
   incrementStatisticsData: PropTypes.func.isRequired
 }
 
