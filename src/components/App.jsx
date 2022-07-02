@@ -12,7 +12,7 @@ class App extends Component {
   }
   handleButtonClick = (event) => {
     const buttonName = event.target.name
-    
+
     this.setState(prevState => ({
       [buttonName]: prevState[buttonName] + 1
     }))
@@ -21,7 +21,7 @@ class App extends Component {
     return Object.values(this.state).reduce((total, value) => total + value, 0)
   }
   countPositiveFeedbackPercentage(total) {
-    return Math.round((this.state.good / total ) * 100)
+    return Math.round((this.state.good / total) * 100)
   }
 
   render() {
@@ -31,23 +31,23 @@ class App extends Component {
     const positivePercentage = this.countPositiveFeedbackPercentage(totalFeedback)
 
     return (<>
-      <Section title={'Please leave feedback'}>
+      <Section title='Please leave feedback'>
         <FeedbackOptions options={buttonOptions} incrementStatisticsData={this.handleButtonClick} />
       </Section>
-              
-      <Section title={'Statistics'}>
+
+      <Section title='Statistics'>
         {totalFeedback
           ? <Statistics
-              good={good}
-              neutral={neutral}
-              bad={bad}
-              total={totalFeedback}
-              percentage={positivePercentage}>
-            </Statistics>
-          : <Notifitation message={'There is no feedback'} />}
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={totalFeedback}
+            percentage={positivePercentage}>
+          </Statistics>
+          : <Notifitation message='There is no feedback' />}
       </Section>
-      </>
-  ); 
+    </>
+    );
   }
 }
 
